@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: webapp-service
+  labels:
+    app: webapp-service
+    release: "webapp-service"
+    app.kubernetes.io/name: webapp-service
+    app.kubernetes.io/instance: "webapp-service"
+    app.kubernetes.io/part-of: webapp-service
+spec:
+  serviceName: webapp-service
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: webapp-service
+      release: "webapp-service"
+      role: master
+  template:
+    metadata:
+      name: webapp-service
+      labels:
+        app: webapp-service
+        release: "webapp-service"
+        role: master
+    spec:
+      containers:
+      - name: webapp-service
+        image: "mrinmoymena/webapp:1.0"
+        imagePullPolicy: "IfNotPresent"
+        env:
+        - name: DATABASE_HOST
+          value: "mysql"
+        - name: DATABASE_DB
+          value: "test"
+        - name: DATABASE_USER
+          value: "root"
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: mysql-root-password
+        ports:
+        - name: http
+          containerPort: 5000      
