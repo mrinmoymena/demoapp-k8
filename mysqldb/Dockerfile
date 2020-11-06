@@ -3,7 +3,7 @@ FROM mysql:latest
 MAINTAINER mrinmoy mena
 
 ENV MYSQL_DATABASE="test" \
-    MYSQL_ROOT_PASSWORD="password"
+    MYSQL_ROOT_PASSWORD="P0ssword"
 
 ADD schema.sql /docker-entrypoint-initdb.d
 
