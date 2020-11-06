@@ -1,4 +1,2 @@
-CREATE DATABASE test;
-USE test;
 CREATE TABLE employees (name VARCHAR(20));
 INSERT INTO employees VALUES ('MRINMOY');
