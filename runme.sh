@@ -20,4 +20,5 @@ cd /usr/local/bin/
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" 
 /usr/local/aws-cli/v2/current/bin/aws eks --region ap-south-1 update-kubeconfig --name eks-demo
 
-
+cd ~/demoapp-k8/helm
+helm install mysql ./mysql
