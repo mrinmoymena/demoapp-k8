@@ -12,21 +12,26 @@ This repo contain following
 - clone the repo: git clone https://github.com/mrinmoymena/demoapp-k8
 - Setup AWS credentials file on Linux machine (~/.aws/credentials)
 - Sample content:
+     
      [default]
+     
      aws_access_key_id=
+     
      aws_secret_access_key=
 - Install following dependencies by running dependencies.sh
+    
     ./dependencies.sh
 
 ## 2. Create infra and Install application
 
-  run ./runme.sh
+    run ./runme.sh
 
     
 ## 3. verify the app
 
 run following command to get EXTERNAL-IP
-  kubectl get nodes -o wide
+  
+   kubectl get nodes -o wide
 
 Verify following on browser
 
