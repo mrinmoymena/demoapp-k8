@@ -30,7 +30,7 @@ run following command to get EXTERNAL-IP
 
 Verify following on browser
 
-  http://<EXTERNAL-IP>:31000
-  http://<EXTERNAL-IP>:31000/how%20are%20you
+  http://{EXTERNAL-IP}:31000
+  http://{EXTERNAL-IP}:31000/how%20are%20you
 
 Important: Before you access NodeIP:NodePort from an outside cluster, you must enable the security group of the nodes to allow incoming traffic through port 31000.
