@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  labels:
+    {{- include "webapp.labels" . | nindent 4 }}      
+spec:
+  serviceName: webapp-service
+  replicas: {{ .Values.replicaCount }}
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      {{- include "webapp.selectorLabels" . | nindent 6 }}      
+      role: master
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "webapp.selectorLabels" . | nindent 8 }}
+        role: master
+    spec:
+      containers:
+      - name: webapp-service
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag}}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: DATABASE_HOST
+          value: {{ .Values.env.DATABASE_HOST }}
+        - name: DATABASE_DB
+          value: {{ .Values.env.DATABASE_DB }}
+        - name: DATABASE_USER
+          value: {{ .Values.env.DATABASE_USER }}
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.imagePullSecrets }}"
+              key: "{{ .Values.imagePullSecretsKey }}"
+        ports:
+        - name: http
+          containerPort: 5000      

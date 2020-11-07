@@ -29,8 +29,8 @@ spec:
     spec:
       containers:
       - name: webapp-service
-        image: "mrinmoymena/webapp:1.0"
-        imagePullPolicy: "IfNotPresent"
+        image: "mrinmoymena/webapp:2.0"
+        imagePullPolicy: "Always"
         env:
         - name: DATABASE_HOST
           value: "mysql"
