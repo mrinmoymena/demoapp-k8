@@ -42,10 +42,17 @@ Important: Before you access NodeIP:NodePort from an outside cluster, you must e
 
 ## 4. Additional Information
 Build docker image and run mysqldb image locally
+    
     cd mysqldb
+    
     docker build -t my-mysql .
+    
     docker run -d -p 3306:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=supersecret my-mysql
+
 Build docker image and run webapp image locally
+    
     cd webapp
+    
     docker build -t my-app .
+    
     docker run -d -p 5000:5000 --name my-app my-app
