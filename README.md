@@ -2,7 +2,7 @@
 
 This repo contain following 
   - Terraform script to create infra in AWS like vpc, subnets, EKS etc.
-  - simple web application using [Python Flask] Dockerfile and corresponding helm chart (statefullset with rolling update) 
+  - mediawiki app and corresponding helm chart (statefullset with rolling update) 
   - [MySQL] database Dockerfile and corresponding helm chart (Deployment with persistent volume)
   - This repo is used to demonstrate of deployment of those application in EKS cluster.
 
@@ -31,17 +31,24 @@ This repo contain following
     
 ## 3. verify the app
 
-run following command to get EXTERNAL-IP
+ 1. Get the MediaWiki URL by running:
+
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc --namespace default -w mediawiki'
+
+  export SERVICE_IP=$(kubectl get svc --namespace default mediawiki --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
   
-   kubectl get nodes -o wide
+  export SERVICE_PORT=$(kubectl get svc --namespace default mediawiki -o jsonpath="{.spec.ports[0].nodePort}")
+  
+  echo "Mediawiki URL: http://$SERVICE_IP:$SERVICE_PORT/"
 
-Verify following on browser
+ 2. Get your MediaWiki login credentials by running:
 
-  http://{EXTERNAL-IP}:31000
+    echo Username: user
+    
+   echo Password: $(kubectl get secret --namespace default mediawiki -o jsonpath="{.data.mediawiki-password}" | base64 --decode)
 
-  http://{EXTERNAL-IP}:31000/how%20are%20you
-
-Important: Before you access NodeIP:NodePort from an outside cluster, you must enable the security group of the nodes to allow incoming traffic through port 31000.
+Important: Before you access NodeIP:NodePort from an outside cluster, you must enable the security group of the nodes to allow incoming traffic through port SERVICE_PORT.
 
 ## 4. Additional Information
 Build docker image and run mysqldb image locally

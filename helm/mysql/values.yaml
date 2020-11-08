@@ -2,7 +2,7 @@
 ## ref: https://hub.docker.com/r/library/mysql/tags/
 ##
 image: "mrinmoymena/mysqldb"
-imageTag: "1.0"
+imageTag: "2.0"
 
 strategy:
   type: Recreate

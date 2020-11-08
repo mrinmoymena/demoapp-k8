@@ -25,4 +25,6 @@ done
 
 echo "installing webapp service in EKS"
 
-helm install webapp ./webapp
+helm install mediawiki ./mediawiki
+
+
