@@ -2,8 +2,8 @@
 
 This repo contain following 
   - Terraform script to create infra in AWS like vpc, subnets, EKS etc.
-  - simple web application using [Python Flask] Dockerfile and corresponding helm chart (statefull with rolling update) 
-  - [MySQL] database Dockerfile and corresponding helm chart (with persistent volume)
+  - simple web application using [Python Flask] Dockerfile and corresponding helm chart (statefullset with rolling update) 
+  - [MySQL] database Dockerfile and corresponding helm chart (Deployment with persistent volume)
   - This repo is used to demonstrate of deployment of those application in EKS cluster.
 
 
