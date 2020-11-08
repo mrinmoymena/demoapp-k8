@@ -60,5 +60,7 @@ Build docker image and run webapp image locally
 ## 5. Features under developement
 
   -- Install third party framework like istio to support canary deployment and prometheus for monitoring ( ./third_party_framework/install_me.sh)
+  
   -- create terraform module for AWS infra deployment in multiple region and remote state management in s3
+  
   -- Jenkinsfile for multi branch pipeline
