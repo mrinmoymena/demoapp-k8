@@ -22,7 +22,7 @@ resource "aws_eks_cluster" "eks_demo" {
 }
 
 resource "aws_cloudwatch_log_group" "eks_demo_log_group" {
-  name              = "/aws/eks/${var.cluster_name}/cluster"
+  name              = "/aws/eks/${var.cluster_name}/eksCluster"
   retention_in_days = 7
 }
 
