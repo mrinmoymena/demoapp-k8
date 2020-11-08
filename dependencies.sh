@@ -16,4 +16,5 @@ curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s ht
 
 cd /usr/local/bin/
 wget https://get.helm.sh/helm-v3.4.0-linux-amd64.tar.gz
+tar -xvzf helm-v3.4.0-linux-amd64.tar.gz
 mv linux-amd64/helm .
