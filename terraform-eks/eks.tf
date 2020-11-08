@@ -1,8 +1,3 @@
-variable "cluster_name" {
-  default = "eks-demo"
-  type    = "string"
-}
-
 resource "aws_eks_cluster" "eks_demo" {
   name = "${var.cluster_name}"
   role_arn = "${aws_iam_role.eks_demo_iam.arn}"

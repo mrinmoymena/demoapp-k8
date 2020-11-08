@@ -2,8 +2,8 @@
 
 This repo contain following 
   - Terraform script to create infra in AWS like vpc, subnets, EKS etc.
-  - simple web application using [Python Flask] Dockerfile and corresponding helm chart 
-  - [MySQL] database Dockerfile and corresponding helm chart
+  - simple web application using [Python Flask] Dockerfile and corresponding helm chart (statefull with rolling update) 
+  - [MySQL] database Dockerfile and corresponding helm chart (with persistent volume)
   - This repo is used to demonstrate of deployment of those application in EKS cluster.
 
 
@@ -56,3 +56,9 @@ Build docker image and run webapp image locally
     docker build -t my-app .
     
     docker run -d -p 5000:5000 --name my-app my-app
+
+## 5. Features under developement
+
+  -- Install third party framework like istio to support canary deployment and prometheus for monitoring ( ./third_party_framework/install_me.sh)
+  -- create terraform module for AWS infra deployment in multiple region and remote state management in s3
+  -- Jenkinsfile for multi branch pipeline
