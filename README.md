@@ -2,7 +2,8 @@
 
 This repo contain following 
   - Terraform script to create infra in AWS like vpc, subnets, EKS etc.
-  - mediawiki app and corresponding helm chart (statefullset with rolling update) 
+  - mediawiki app and corresponding helm chart 
+  - Sample web app using python and own Dockerfile (statefullset with rolling update) 
   - [MySQL] database Dockerfile and corresponding helm chart (Deployment with persistent volume)
   - This repo is used to demonstrate of deployment of those application in EKS cluster.
 
@@ -68,6 +69,8 @@ Build docker image and run webapp image locally
     docker run -d -p 5000:5000 --name my-app my-app
 
 ## 5. Features under developement
+  
+  -- Own dockerfile for mediawiki and resolve crashloopback error of mediawiki pod
 
   -- Install third party framework like istio to support canary deployment and prometheus for monitoring ( ./third_party_framework/install_me.sh)
   
